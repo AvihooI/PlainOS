@@ -1,0 +1,9 @@
+Boot         [ ]
+GDT          [ ]
+IDT          [ ]
+ISR          [ ]
+PIC          [ ]
+PIT          [ ]
+KB           [ ]
+Paging       [ ]
+
