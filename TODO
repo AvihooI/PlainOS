@@ -1,9 +1,15 @@
-Boot         [X]
-GDT          [X]
-IDT          [X]
-ISR          [ ]
-PIC          [ ]
-PIT          [ ]
-KB           [ ]
-Paging       [ ]
+Initial stuff:
 
+    Boot             [X]
+    GDT              [X]
+    IDT              [X]
+    Small String Lib [X]
+    ISR              [ ]
+    PIC              [ ]
+    PIT              [ ]
+    KB               [ ]
+
+Later on:
+
+    Memory detection [ ]
+    Paging           [ ]

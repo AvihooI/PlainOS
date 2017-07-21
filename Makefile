@@ -11,7 +11,8 @@ ALL_OBJ :=  \
 		_boot.o \
 		_environment.o \
 		kernel.o \
-		_io.o
+		_io.o \
+		string.o
 ALL_DEP := $(patsubst %.o,.%.d,$(ALL_OBJ))
 
 #Assembly configuration
