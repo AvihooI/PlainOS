@@ -10,7 +10,8 @@ TARGET := plainos.bin
 ALL_OBJ :=  \
 		_boot.o \
 		_environment.o \
-		kernel.o
+		kernel.o \
+		_io.o
 ALL_DEP := $(patsubst %.o,.%.d,$(ALL_OBJ))
 
 #Assembly configuration
@@ -47,6 +48,7 @@ plainos.bin: $(ALL_OBJ)
 
 clean:
 	rm -f $(ALL_DEP) $(ALL_OBJ)
+	rm -f $(TARGET)
 
 ifneq ($(MAKECMDGOALS),clean)
 -include $(ALL_DEP)

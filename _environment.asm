@@ -14,7 +14,7 @@ stack_setup:
 gdt_setup:
     lgdt [gdtr] ;load the gdt register 
     mov ax, 0x08 ;load the first gdt selector for our code segment
-    jmp 0x08:gdt_reload ;we're now using the cose segment selector to jump
+    jmp 0x08:gdt_reload ;we're now using the code segment selector to jump
 gdt_reload:
     mov ax, 0x10 ;load the second gdt selector for the data segments and stack segment
     mov ds, ax
@@ -83,4 +83,3 @@ section .bss
 stack_top:
 resb 16384 ;reserve 16 KiB
 stack_bottom: ;stacks grow downwards in memory
-
