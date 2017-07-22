@@ -12,7 +12,9 @@ ALL_OBJ :=  \
 		_environment.o \
 		kernel.o \
 		_io.o \
-		string.o
+		string.o \
+		_isr.o \
+		interrupts.o
 ALL_DEP := $(patsubst %.o,.%.d,$(ALL_OBJ))
 
 #Assembly configuration
