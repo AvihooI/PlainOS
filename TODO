@@ -5,6 +5,7 @@ Initial stuff:
     IDT              [X]
     Small String Lib [X]
     ISR              [ ]
+    Terminal         [ ]
     PIC              [ ]
     PIT              [ ]
     KB               [ ]
