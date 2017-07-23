@@ -10,11 +10,12 @@ TARGET := plainos.bin
 ALL_OBJ :=  \
 		_boot.o \
 		_environment.o \
-		kernel.o \
 		_io.o \
 		string.o \
 		_isr.o \
-		interrupts.o
+		interrupts.o \
+		terminal.o \
+		kernel.o
 ALL_DEP := $(patsubst %.o,.%.d,$(ALL_OBJ))
 
 #Assembly configuration
@@ -50,8 +51,9 @@ plainos.bin: $(ALL_OBJ)
 	@$(LD) -o $@ $(LD_FLAGS) $^
 
 clean:
-	rm -f $(ALL_DEP) $(ALL_OBJ)
-	rm -f $(TARGET)
+	@echo "Cleaning directory"
+	@rm -f $(ALL_DEP) $(ALL_OBJ)
+	@rm -f $(TARGET)
 
 ifneq ($(MAKECMDGOALS),clean)
 -include $(ALL_DEP)
