@@ -32,8 +32,10 @@ void terminal_scroll();
 
 void terminal_set_color(byte color);
 
+void terminal_goto(size_t column, size_t row);
+
 void terminal_insert_character(char c);
 
-void terminal_goto(size_t column, size_t row);
+void terminal_insert_string(char *str);
 
 #endif

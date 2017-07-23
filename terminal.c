@@ -112,6 +112,17 @@ void terminal_set_color(byte color)
     terminal_current_color = color;
 }
 
+
+void terminal_goto(size_t column, size_t row)
+{
+    //making sure we don't go to an invalid place
+    if (column >= VGA_WIDTH || row >= VGA_HEIGHT)
+        return;
+
+    terminal_column = column;
+    terminal_row = row;
+}
+
 void terminal_insert_character(char c)
 {
     if (c == '\n')
@@ -125,12 +136,13 @@ void terminal_insert_character(char c)
     }
 }
 
-void terminal_goto(size_t column, size_t row)
+void terminal_insert_string(char *str)
 {
-    //making sure we don't go to an invalid place
-    if (column >= VGA_WIDTH || row >= VGA_HEIGHT)
-        return;
+    size_t i = 0;
 
-    terminal_column = column;
-    terminal_row = row;
+    while (str[i])
+    {
+        terminal_insert_character(str[i]);
+        i++;
+    }
 }
