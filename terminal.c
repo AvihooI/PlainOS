@@ -136,7 +136,7 @@ void terminal_insert_character(char c)
     }
 }
 
-void terminal_insert_string(char *str)
+void terminal_insert_string(const char *str)
 {
     size_t i = 0;
 

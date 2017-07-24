@@ -36,6 +36,6 @@ void terminal_goto(size_t column, size_t row);
 
 void terminal_insert_character(char c);
 
-void terminal_insert_string(char *str);
+void terminal_insert_string(const char *str);
 
 #endif
