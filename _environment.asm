@@ -1,8 +1,7 @@
 ;this code deals with several things
 ; 1 - setting up an execution stack for the kernel under the .bss section
 ; 2 - setting up a fixed, read only global descriptor table (GDT)
-; 3 - setting up an interrupt descriptor table (IDT) with empty entries (filling it is the responsibility of the kernel)
-; 4 - calling kernel_main()
+; 3 - calling kernel_main()
 
 section .text
 
@@ -23,7 +22,7 @@ gdt_reload:
     mov gs, ax
     mov ss, ax
 idt_setup:
-    lidt [idtr] ;load the idt register
+    lidt [idtr]
 finish: ;we're done setting up the environment, we can jump to kernel main
     extern kmain
     jmp kmain ;jmp to kernel_main, a function defined elsewhere (typically C code) to indicate the beginning of our kernel
@@ -31,7 +30,7 @@ finish: ;we're done setting up the environment, we can jump to kernel main
 section .rodata
 
 gdtr: ;the data to load into the gdt register
-    gdt_limit dw 8*5 ;five entries
+    gdt_limit dw 8*5 - 1 ;five entries
     gdt_base dd gd_table ;pointer to the gd_table in rodata
 
 align 8
@@ -71,12 +70,15 @@ gd_table:
 section .data
 
 idtr: ;the data to load into the gdt register
-    idt_limit dw 8*256 ;256 entries
-    idt_base dd gd_table ;pointer to the idt in data
+    idt_limit dw 8*256 - 1 ;256 entries
+    idt_base dd id_table ;pointer to the idt in data
 
 global _idt ;we want to export this symbol in order to later populate it elsewhere
 align 8
+id_table:
 _idt times 256 dq 0 ;an interrupt table with empty 256 entries
+
+
 
 section .bss
 
