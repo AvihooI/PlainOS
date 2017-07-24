@@ -1,4 +1,4 @@
-;all the isr functions and a stub that 
+;all the isr functions and a common handler 
 
 section .text
 
@@ -94,10 +94,12 @@ _isr_7:
 _isr_8:
     cli
     push 8 ;double fault
+    jmp common_isr 
 _isr_9:
     cli
     push 0
     push 9 ;coprocessor segment overrun
+    jmp common_isr 
 _isr_10:
     cli
     push 10 ;invalid tss
@@ -145,7 +147,7 @@ _isr_20:
 
 ;15 and 21 through 31 are reserved and unused on contemporary processors 
 ;so they're all treated the same with an ISR number of 15
-
+;note: interrupt 15 is actually trapped by the BIOS for certain purposes and can never reach kernel code
 _isr_15:
 _isr_21:
 _isr_22:
